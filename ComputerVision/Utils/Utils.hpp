@@ -184,13 +184,11 @@ inline void applyShotNoise(Image& image, double noise_factor = 0.2) {
         for (int c = 0; c < cols; ++c) {
             
             float noise = (noise_factor * (rand() % 256)) / 255.0;
+            auto noisy_pixel = image.at(r, c);
+            noisy_pixel = noisy_pixel + noise;
+            noisy_pixel.clamp();
+            image.at(r, c) = noisy_pixel;
             
-            for (int channel = 0; channel < 3; ++channel) {
-                auto noisy_pixel = image.at(r, c);
-                noisy_pixel = noisy_pixel + noise;
-                noisy_pixel.clamp();
-                image.at(r, c) = noisy_pixel;
-            }
         }
     }
 }
