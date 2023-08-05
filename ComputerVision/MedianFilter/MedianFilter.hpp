@@ -50,9 +50,7 @@ Image applyMedianFilterToImage(Image& image, int filter_size = 3) {
 
     for (int r = 0; r < rows; ++r) {
         for (int c = 0; c < cols; ++c) {
-            for (int channel = 0; channel < 3; ++channel) {
-                filtered_image.at(r, c) = applyMedianFilterToPixel(image, r, c, filter_size);
-            }
+            filtered_image.at(r, c) = applyMedianFilterToPixel(image, r, c, filter_size);
         }
     }
 
